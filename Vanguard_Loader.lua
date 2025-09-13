@@ -20,7 +20,6 @@ local AIM_SETTINGS = {
 	Enabled = true,
 	TeamCheck = false,
 	AimPart = "Head",
-	AimAssistEnabled = false, -- New setting for smooth aim assist
 	HoldingAim = false,
 	TriggerbotEnabled = false, -- New setting for the triggerbot
 	TriggerbotToggleKey = Enum.KeyCode.H,
@@ -219,9 +218,6 @@ local function openAim()
 	clearContent()
 	createCheckbox("Aimbot", AIM_SETTINGS.Enabled, function(val) AIM_SETTINGS.Enabled = val end)
 	createCheckbox("Team Check", AIM_SETTINGS.TeamCheck, function(val) AIM_SETTINGS.TeamCheck = val end)
-	
-	-- New Aim Assist Checkbox
-	createCheckbox("Aim Assist", AIM_SETTINGS.AimAssistEnabled, function(val) AIM_SETTINGS.AimAssistEnabled = val end)
 	
 	-- Triggerbot Checkbox
 	createCheckbox("Triggerbot", AIM_SETTINGS.TriggerbotEnabled, function(val) AIM_SETTINGS.TriggerbotEnabled = val end)
@@ -462,13 +458,8 @@ RunService.RenderStepped:Connect(function()
 		local closestPlayer = getClosestPlayer()
 		if closestPlayer and closestPlayer.Character and closestPlayer.Character:FindFirstChild(AIM_SETTINGS.AimPart) then
 			local targetPart = closestPlayer.Character[AIM_SETTINGS.AimPart]
-			if AIM_SETTINGS.AimAssistEnabled then
-				-- Smooth aim assist
-				TweenService:Create(Camera, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {CFrame = CFrame.new(Camera.CFrame.Position, targetPart.Position)}):Play()
-			else
-				-- Snappy aimbot
-				Camera.CFrame = CFrame.new(Camera.CFrame.Position, targetPart.Position)
-			end
+			-- Snappy aimbot
+			Camera.CFrame = CFrame.new(Camera.CFrame.Position, targetPart.Position)
 		end
 	end
 end)
