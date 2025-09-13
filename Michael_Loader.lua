@@ -191,8 +191,9 @@ end
 -- SIDEBAR BUTTON
 local function createSidebarButton(name, onClick)
 	local btn = Instance.new("TextButton")
+	-- Scoot tabs down by adding 20 to the Y offset
 	btn.Size = UDim2.new(1,-10,0,40)
-	btn.Position = UDim2.new(0,5,0,(#Sidebar:GetChildren()-0.5)*50)
+	btn.Position = UDim2.new(0,5,0,(#Sidebar:GetChildren()-0.5)*50 + 20)
 	btn.BackgroundColor3 = Color3.fromRGB(50,50,50)
 	btn.BorderSizePixel = 0
 	btn.Text = name
