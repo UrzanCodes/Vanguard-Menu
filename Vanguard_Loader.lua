@@ -256,7 +256,7 @@ local function openCredits()
 	local creditLabel = Instance.new("TextLabel")
 	creditLabel.Size = UDim2.new(1, -20, 0, 50)
 	creditLabel.Position = UDim2.new(0, 10, 0, 10)
-	creditLabel.Text = "Made by Richard/Urzan"
+	creditLabel.Text = "Made by Nocturnal"
 	creditLabel.TextColor3 = Color3.new(1,1,1)
 	creditLabel.TextScaled = true
 	creditLabel.Font = Enum.Font.GothamBold
